@@ -1,0 +1,18 @@
+[submodule "Router"]
+	path = infra/Router
+	url = https://github.com/LostAttractor/Router.git
+[submodule "Hydra"]
+	path = infra/Hydra
+	url = https://github.com/LostAttractor/Hydra.git
+[submodule "Metrics"]
+	path = infra/Metrics
+	url = https://github.com/LostAttractor/Metrics.git
+[submodule "NAS"]
+	path = infra/NAS
+	url = https://github.com/LostAttractor/NAS.git
+[submodule "Kubernetes"]
+	path = infra/Kubernetes
+	url = https://github.com/LostAttractor/Kubernetes.git
+[submodule "EC2"]
+	path = infra/EC2
+	url = https://github.com/LostAttractor/EC2.git
