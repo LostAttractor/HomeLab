@@ -1,7 +1,15 @@
-{ modulesPath, ... }:
+{ modulesPath, lib, ... }:
 {
-  imports = [ (modulesPath + "/virtualisation/lxc-container.nix") ];
+  imports = [ (modulesPath + "/virtualisation/proxmox-lxc.nix") ];
 
-  # Supress systemd units that don't work because of LXC
-  systemd.suppressedSystemUnits = [ "sys-kernel-debug.mount" ];
+  proxmoxLXC.manageNetwork = true;
+
+  # Allow the user to login as root without password.
+  users.users.root.initialHashedPassword = lib.mkOverride 150 "";
+
+  # Some more help text.
+  services.getty.helpLine = ''
+
+    Log in as "root" with an empty password.
+  '';
 }
