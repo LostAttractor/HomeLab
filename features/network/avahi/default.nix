@@ -9,6 +9,8 @@ _: {
       domain = true;
       addresses = true;
       userServices = true;
+      # workstation = true;
+      # hinfo = true;
     };
   };
 }

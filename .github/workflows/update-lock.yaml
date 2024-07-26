@@ -1,0 +1,34 @@
+name: Update flake.lock on `autoupdate` Branch
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v27
+      - name: Config
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+      - name: Update
+        run: |
+          git checkout $(git rev-parse master)
+          cd infra
+          nix flake update
+          git commit -m "Update flake.lock" -i flake.lock
+          HEAD=$(git rev-parse HEAD)
+          git checkout -B autoupdate
+          git reset --hard ${HEAD}
+      - name: Push
+        run: |
+          git push origin autoupdate -f
