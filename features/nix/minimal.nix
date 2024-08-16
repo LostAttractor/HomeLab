@@ -1,4 +1,6 @@
-_: {
+{ pkgs, ... }: {
+  nix.package = pkgs.nixVersions.latest;
+
   # Enabling Flake
   nix.settings.experimental-features = [
     "nix-command"
