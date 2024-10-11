@@ -2,6 +2,8 @@
 {
   imports = [ (modulesPath + "/virtualisation/amazon-image.nix") ];
 
+  boot.kernelParams = [ "systemd.setenv=SYSTEMD_SULOGIN_FORCE=1" ];
+
   ec2.efi = true;
 
   # Xanmod Kernel

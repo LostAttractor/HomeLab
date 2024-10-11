@@ -11,6 +11,8 @@
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
+  boot.kernelParams = [ "systemd.setenv=SYSTEMD_SULOGIN_FORCE=1" ];
+
   # UEFI
   boot.loader.systemd-boot.enable = lib.mkDefault true;
   boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
@@ -37,8 +39,6 @@
   proxmox.qemuConf.bios = lib.mkDefault "ovmf";
   proxmox.qemuConf.net0 = "virtio=00:00:00:00:00:00,bridge=vmbr0";
   proxmox.qemuConf.diskSize = "16384";
+  proxmox.qemuConf.agent = true;
   proxmox.qemuExtraConf.machine = "q35";
-
-  # Disable CloudInit
-  proxmox.cloudInit.enable = false;
 }
