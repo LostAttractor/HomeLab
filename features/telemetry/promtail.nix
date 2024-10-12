@@ -1,6 +1,8 @@
 {
   config,
-  promtail_url ? "http://metrics.home.lostattractor.net:3100/loki/api/v1/push",
+  promtail_url ? "http://loki.home.lostattractor.net/loki/api/v1/push",
+  promtail_username ? "main",
+  promtail_password_file,
   ...
 }:
 {
@@ -9,7 +11,13 @@
     configuration = {
       server.http_listen_port = 9080;
       positions.filename = "/tmp/positions.yaml";
-      clients = [ { url = promtail_url; } ];
+      clients = [ {
+        url = promtail_url;
+        basic_auth = {
+          username = promtail_username;
+          password_file = promtail_password_file;
+        };
+      } ];
 
       scrape_configs = [
         {
