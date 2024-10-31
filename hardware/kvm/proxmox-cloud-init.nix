@@ -47,7 +47,7 @@
   # Proxmox Image
   proxmox.qemuConf.bios = lib.mkDefault "ovmf";
   proxmox.qemuConf.net0 = "virtio=00:00:00:00:00:00,bridge=vmbr0";
-  proxmox.qemuConf.diskSize = "16384";
   proxmox.qemuConf.agent = true;
   proxmox.qemuExtraConf.machine = "q35";
+  virtualisation.diskSize = 16384;
 }
