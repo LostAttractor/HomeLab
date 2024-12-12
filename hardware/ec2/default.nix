@@ -12,7 +12,7 @@
   boot.kernelPackages = if (pkgs.system != "aarch64-linux") then lib.mkDefault pkgs.linuxPackages_xanmod_latest else lib.mkDefault pkgs.linuxPackages_latest;
 
   # Enable Swap
-  swapDevices = [ {
+  swapDevices = lib.mkDefault [ {
     device = "/var/lib/swapfile";
     size = 4*1024;
   } ];

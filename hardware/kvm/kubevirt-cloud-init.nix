@@ -39,7 +39,7 @@
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
 
   # Enable Swap
-  swapDevices = [ {
+  swapDevices = lib.mkDefault [ {
     device = "/var/lib/swapfile";
     size = 4*1024;
   } ];
