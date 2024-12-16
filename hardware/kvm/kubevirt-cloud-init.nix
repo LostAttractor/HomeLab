@@ -26,6 +26,8 @@
     fsType = "vfat";
   };
 
+  fileSystems."/".options = [ "discard" ];
+
   system.build.kubevirtImage = lib.mkForce (import (modulesPath + "/../lib/make-disk-image.nix") {
     inherit lib config pkgs;
     partitionTableType = "efi";

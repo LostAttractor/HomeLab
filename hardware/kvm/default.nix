@@ -21,6 +21,7 @@
     device = "/dev/disk/by-label/nixos";
     fsType = "ext4";
     autoResize = true;
+    options = [ "discard" ];
   };
 
   boot.growPartition = true;
