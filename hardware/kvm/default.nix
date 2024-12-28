@@ -37,7 +37,7 @@
   boot.initrd.systemd.enable = lib.mkDefault true;
 
   # Xanmod Kernel
-  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = lib.mkOptionDefault pkgs.linuxPackages_xanmod_latest;
 
   # Enable Swap
   swapDevices = lib.mkDefault [ {
