@@ -14,9 +14,21 @@
     "zswap.enabled=1"
     "zswap.shrinker_enabled=1"
     "systemd.setenv=SYSTEMD_SULOGIN_FORCE=1"
-    "console=ttyS0"
   ];
 
+  # UEFI
+  boot.loader.systemd-boot.enable = lib.mkDefault true;
+  boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
+
+  boot.tmp.cleanOnBoot = true;
+
+  # All label need to be set manually
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/ESP";
+    fsType = "vfat";
+  };
+
+  # https://github.com/elitak/nixos-infect/blob/master/nixos-infect#L390
   fileSystems."/" = {
     device = "/dev/disk/by-label/nixos";
     fsType = "ext4";
@@ -24,14 +36,8 @@
     options = [ "discard" ];
   };
 
-  boot.growPartition = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.timeout = 0;
-
   services.qemuGuest.enable = true;
   services.openssh.enable = true;
-  # services.cloud-init.enable = true;
-  systemd.services."serial-getty@ttyS0".enable = true;
 
   # Systemd in initrd
   boot.initrd.systemd.enable = lib.mkDefault true;
