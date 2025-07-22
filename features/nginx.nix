@@ -9,12 +9,12 @@ _: {
     enable = true;
     enableReload = true;
 
-    recommendedBrotliSettings = true;
-    recommendedGzipSettings = true;
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    recommendedZstdSettings = true;
+    recommendedBrotliSettings = true;
+    recommendedUwsgiSettings = true;
+    recommendedGzipSettings = true;
 
     proxyTimeout = "900s";
 
