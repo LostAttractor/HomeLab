@@ -28,6 +28,8 @@
 
   fileSystems."/".options = [ "discard" ];
 
+  services.qemuGuest.package = with pkgs; (qemu_kvm.override { minimal = true; guestAgentSupport = true; }).ga;
+
   system.build.kubevirtImage = lib.mkForce (import (modulesPath + "/../lib/make-disk-image.nix") {
     inherit lib config pkgs;
     partitionTableType = "efi";

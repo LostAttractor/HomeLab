@@ -23,6 +23,8 @@
 
   fileSystems."/".options = [ "discard" ];
 
+  services.qemuGuest.package = with pkgs; (qemu_kvm.override { minimal = true; guestAgentSupport = true; }).ga;
+
   # Systemd in initrd
   boot.initrd.systemd.enable = lib.mkDefault true;
 

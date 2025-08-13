@@ -36,7 +36,11 @@
     options = [ "discard" ];
   };
 
-  services.qemuGuest.enable = true;
+  services.qemuGuest = {
+    enable = true;
+    package = with pkgs; (qemu_kvm.override { minimal = true; guestAgentSupport = true; }).ga;
+  };
+
   services.openssh.enable = true;
 
   # Systemd in initrd
