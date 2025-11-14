@@ -8,8 +8,7 @@
     ethtool                          # manage NIC settings (offload, NIC feeatures, ...)
     tcpdump bandwhich pwru           # view network traffic / utilization
     dnsutils                         # dns tools
-    iperf3                           # speedtest tools
-    curlHTTP3                        # curl with http3 support
+    iperf3                           # speedtest tools 
     inetutils                        # telnet
     duf gdu                          # disk usage analyaer
     lsd
